@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.anykh_dev.yatranslate.MainActivity"
+    android:background="@color/mainBackColor">
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/ma_Frame"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="10dp">
+
+            <EditText
+                android:id="@+id/ma_et_Text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:gravity="start"
+                android:background="@drawable/ma_et_text_shape"
+                android:padding="10dp"
+                tools:ignore="LabelFor" />
+
+            <Button
+                android:id="@+id/ma_btn_Clear"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="bottom|start"
+                android:background="@android:drawable/ic_delete"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/ma_LinLt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp">
+
+            <Button
+                android:id="@+id/ma_btn_Translate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClikTranslate"
+                android:text="Translate" />
+            <TextView
+                android:id="@+id/ma_tv_Translate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textAlignment="gravity"
+                android:gravity="center_vertical|end"/>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/ma_lv_Variants"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"/>
+
+
+    </LinearLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/mainBackColor"
+        app:menu="@menu/navigation"
+        />
+
+</LinearLayout>
