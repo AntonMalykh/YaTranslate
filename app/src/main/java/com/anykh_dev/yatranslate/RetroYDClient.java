@@ -15,8 +15,8 @@ class RetroYDClient {
                 .build();
     }
 
-    static YDAPIService getYDAPIservice(){
-        return getRetrofitInstance().create(YDAPIService.class);
+    static YDApiService getYDApiservice(){
+        return getRetrofitInstance().create(YDApiService.class);
     }
 
     static String getAuthKey() {

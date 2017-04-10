@@ -15,8 +15,8 @@ class RetroYTClient {
                 .build();
     }
 
-    static YTAPIService getYTAPIservice(){
-        return getRetrofitInstance().create(YTAPIService.class);
+    static YTApiService getYTApiService(){
+        return getRetrofitInstance().create(YTApiService.class);
     }
 
     static String getAuthKey() {

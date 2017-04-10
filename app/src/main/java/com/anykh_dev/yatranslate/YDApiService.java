@@ -6,7 +6,7 @@ import retrofit2.http.Query;
 
 
 
-interface YDAPIService {
+interface YDApiService {
 
     @GET ("api/v1/dicservice/lookup")
     Call<Translations> getTranslations (@Query("key") String key, @Query("lang") String lang,

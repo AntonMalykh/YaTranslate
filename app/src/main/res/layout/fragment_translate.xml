@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/ma_Frame"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/ma_et_text_shape"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/ma_et_Text"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/mainBackColor"
+            android:ems="10"
+            android:gravity="start"
+            android:inputType="textMultiLine"
+            android:padding="10dp"
+            tools:ignore="LabelFor" />
+
+        <Button
+            android:id="@+id/ma_btn_Clear"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="bottom|start"
+            android:background="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <Button
+            android:id="@+id/ma_btn_Translate"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="bottom|end"
+            android:background="@android:drawable/ic_menu_send" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/ma_tv_Translate"
+        android:textSize="20sp"
+        android:textColor="@color/mainTextColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="viewStart"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"/>
+
+    <ListView
+        android:id="@+id/ma_lv_Variants"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp" />
+
+</LinearLayout>
