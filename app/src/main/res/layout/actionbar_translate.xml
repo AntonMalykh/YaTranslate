@@ -1,27 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="fill_horizontal"
-    android:gravity="center">
+    android:layout_gravity="center"
+    android:gravity="center"
+    >
 
-    <Spinner
-        android:id="@+id/ab_translate_spinnerFrom"
+    <TextView
+        android:id="@+id/ab_tr_txtFrom"
+        android:text="English"
+        android:textSize="@dimen/ab_lang_textsize"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         />
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:textColor="@color/mainTextColor"
+        android:gravity="center_vertical"
+        />
 
     <ImageButton
-        android:id="@+id/ab_translate_swap"
+        android:id="@+id/ab_tr_btnSwap"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_media_pause" />
+        android:layout_height="match_parent"
+        app:srcCompat="@android:drawable/ic_media_pause"
+        android:layout_toEndOf="@+id/ab_tr_txtFrom"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:contentDescription="@string/ab_swapbtn_desc"
+        />
 
 
-    <Spinner
-        android:id="@+id/ab_translate_spinnerTo"
+    <TextView
+        android:id="@+id/ab_tr_txtTo"
+        android:text="Russian"
+        android:textSize="@dimen/ab_lang_textsize"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/ab_tr_btnSwap"
+        android:clickable="true"
+        android:textColor="@color/mainTextColor"
+        android:gravity="center_vertical"/>
 
-</LinearLayout>
+</RelativeLayout>
