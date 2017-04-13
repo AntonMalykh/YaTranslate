@@ -17,16 +17,17 @@ class RetroYTClient {
                 .build().create(YTApiService.class);
     }
 
-    void getTranslation (String text, String from, String to, Callback<Translation> call) {
+    //TODO добавить выбор направления перевода
+    void getTranslation (String text, String langFrom, String langTo, Callback<Translation> callback) {
 
         Call<Translation> translationCall = getApiService()
-                .getTranslate(AUTH_KEY, to, text);
+                .getTranslate(AUTH_KEY, langTo, text);
 
-        translationCall.enqueue(call);
+        translationCall.enqueue(callback);
     }
 
-    void getTranslation (String text, String to, Callback<Translation> call){
-        getTranslation(text, null, to, call);
+    void getTranslation (String text, String langTo, Callback<Translation> callback){
+        getTranslation(text, null, langTo, callback);
     }
 
 }

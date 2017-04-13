@@ -14,12 +14,15 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
 public class TranslateFragment extends Fragment implements View.OnClickListener{
+
 
     //Элементы ActionBar
     ActionBar actionBar;
@@ -89,12 +92,11 @@ public class TranslateFragment extends Fragment implements View.OnClickListener{
         switch (v.getId()){
             //Очищаем текст по кнопке Clear
             case (R.id.ma_btn_Clear):
-                if (!TextUtils.isEmpty(mEditText.getText())) {
                     tvTranslate.setText("");
                     mEditText.setText("");
 
                     //TODO добавить очистку листа
-                }
+
                 break;
 
             //Получаем перевод по кнопке Translate
@@ -128,28 +130,52 @@ public class TranslateFragment extends Fragment implements View.OnClickListener{
     void getTranslation(String text){
 
         //Если введена фраза
+        //TODO поменять условия выбора перевода (по пробелу не подходит, нужно выводить результат, если будут введены любые символы между словами
+
         if (text.contains(" ")) {
-
-            //TODO организовать вызов с использованием выбранных языков
-            retroYTClient.getTranslation(text, "ru", new Callback<Translation>() {
-
-                @Override
-                public void onResponse(Call<Translation> call, Response<Translation> response) {
-
-                    if (response.isSuccessful()) {
-                        String translation = response.body().getText().get(0);
-                        tvTranslate.setText(translation);
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Translation> call, Throwable t) {
-
-                }
-            });
+            getYTTranslation(text, null, null);
+        } else {
+            getYDTranslations(text, null, null);
+            //getYTTranslation(text, null, null);
         }
 
-        //Если введено слово
+    }
+
+    //TODO сделать поддержку направления перевода
+    private void getYTTranslation(String text, String langFrom, String langTo){
+        retroYTClient.getTranslation(text, "ru", new Callback<Translation>() {
+
+            @Override
+            public void onResponse(Call<Translation> call, Response<Translation> response) {
+
+                if (response.isSuccessful()) {
+                    String translation = response.body().getText().get(0);
+                    tvTranslate.setText(translation);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Translation> call, Throwable t) {
+
+            }
+        });
+    }
+
+    //TODO сделать поддержку направления перевода
+    private void getYDTranslations (String text, String langFrom, String langTo){
+        retroYDClient.getTranslations(text, "en-ru", new Callback<TranslationsHead>() {
+            @Override
+            public void onResponse(Call<TranslationsHead> call, Response<TranslationsHead> response) {
+                if (response.isSuccessful()){
+                    TranslationsHead th = response.body();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TranslationsHead> call, Throwable t) {
+
+            }
+        });
     }
 
 }

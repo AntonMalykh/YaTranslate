@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="ab_lang_textsize">20sp</dimen>
     <dimen name="listItem_mainTextSize">15sp</dimen>
+    <dimen name="tf_editTextSize">15sp</dimen>
+    <dimen name="tf_translationTextSize">18sp</dimen>
 </resources>

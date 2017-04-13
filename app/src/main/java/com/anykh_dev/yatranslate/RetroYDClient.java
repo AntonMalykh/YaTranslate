@@ -1,25 +1,36 @@
 package com.anykh_dev.yatranslate;
 
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
 class RetroYDClient {
-    private static final String YD_AUTH_KEY = "dict.1.1.20170322T122651Z.c51dfa0fb604bddb.8b16fd9148f80e3146a8804dd843d9ad68c665a8";
-    private static final String BASE_URL = "https://dictionary.yandex.net/";
+    private final String AUTH_KEY = "dict.1.1.20170322T122651Z.c51dfa0fb604bddb.8b16fd9148f80e3146a8804dd843d9ad68c665a8";
+    private final String BASE_URL = "https://dictionary.yandex.net/";
 
-    private static Retrofit getRetrofitInstance() {
+    private YDApiService getApiService() {
         return new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .build();
+                .build().create(YDApiService.class);
     }
 
-    static YDApiService getYDApiservice(){
-        return getRetrofitInstance().create(YDApiService.class);
+    //TODO добавить поддержку направления перевода
+    void getTranslations(String text, String langFrom, String langTo, Callback<TranslationsHead> callback){
+
+        Call<TranslationsHead> translationsCall =
+                getApiService().getTranslations(AUTH_KEY, langTo, text);
+
+        translationsCall.enqueue(callback);
     }
 
-    static String getAuthKey() {
-        return YD_AUTH_KEY;
+    void getTranslations (String text, String langTo, Callback<TranslationsHead> callback){
+        getTranslations(text, null, langTo, callback);
     }
+
 }
