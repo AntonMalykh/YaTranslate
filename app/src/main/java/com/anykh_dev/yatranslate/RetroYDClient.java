@@ -1,8 +1,6 @@
 package com.anykh_dev.yatranslate;
 
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -21,15 +19,15 @@ class RetroYDClient {
     }
 
     //TODO добавить поддержку направления перевода
-    void getTranslations(String text, String langFrom, String langTo, Callback<TranslationsHead> callback){
+    void getTranslations(String text, String langFrom, String langTo, Callback<Translations> callback){
 
-        Call<TranslationsHead> translationsCall =
+        Call<Translations> translationsCall =
                 getApiService().getTranslations(AUTH_KEY, langTo, text);
 
         translationsCall.enqueue(callback);
     }
 
-    void getTranslations (String text, String langTo, Callback<TranslationsHead> callback){
+    void getTranslations (String text, String langTo, Callback<Translations> callback){
         getTranslations(text, null, langTo, callback);
     }
 

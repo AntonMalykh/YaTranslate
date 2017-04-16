@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-class TranslationsHead {
+class Translations {
     @SerializedName("head")
     @Expose
     private Object head;
